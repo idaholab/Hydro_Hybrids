@@ -1,0 +1,10 @@
+# Front End
+dist
+node_modules
+
+# Server
+Lib
+log
+Scripts
+share
+*.cfg
