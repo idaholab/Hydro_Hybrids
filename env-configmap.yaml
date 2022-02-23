@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  CELERY_BACKEND: redis://redis:6379
+  CELERY_BROKER: redis://redis:6379
+  REDIS_PASS: WOODNL127935
+  ROOT: /usr/src/server
+  VUE_APP_FLASK_HOST: http://localhost:5000
+  VUE_APP_NODE_ENV: development
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: app-env
+  name: env
