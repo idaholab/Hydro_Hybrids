@@ -1,0 +1,36 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint:
+      - ""
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}"
+      > /kaniko/.docker/config.json
+    - "/kaniko/executor --context $CI_PROJECT_DIR/server --dockerfile $CI_PROJECT_DIR/server/Dockerfile
+      --destination $CI_REGISTRY/$CI_REGISTRY_PATH/hydro-hybrids-flask:$CI_PIPELINE_IID"
+    - "/kaniko/executor --context $CI_PROJECT_DIR/server/tasks --dockerfile $CI_PROJECT_DIR/server/tasks/Dockerfile
+      --destination $CI_REGISTRY/$CI_REGISTRY_PATH/hydro-hybrids-celery:$CI_PIPELINE_IID"
+    - "/kaniko/executor --context $CI_PROJECT_DIR/app --dockerfile $CI_PROJECT_DIR/app/Dockerfile
+      --destination $CI_REGISTRY/$CI_REGISTRY_PATH/hydro-hybrids-vue:$CI_PIPELINE_IID"
+  only:
+    - feature/gitlab
+
+develpment:
+  stage: deploy
+  image: mcr.microsoft.com/azure-cli:latest
+  script:
+    - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    - install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    - mkdir -p $HOME/.kube
+    - echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config
+    - kubectl apply -f $HYDROHYBRIDS_DEV_KUBERNETES
+  environment:
+    name: development
+  only:
+    - feature/gitlab
