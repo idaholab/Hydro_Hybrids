@@ -25,10 +25,7 @@ spec:
         io.kompose.service: server
     spec:
       containers:
-        - args:
-            - python
-            - app.py
-          env:
+        - env:
             - name: CELERY_BACKEND
               valueFrom:
                 configMapKeyRef:
@@ -54,22 +51,10 @@ spec:
                 configMapKeyRef:
                   key: VUE_APP_FLASK_HOST
                   name: env
-            - name: VUE_APP_NODE_ENV
-              valueFrom:
-                configMapKeyRef:
-                  key: VUE_APP_NODE_ENV
-                  name: env
           image: server
           name: server
           ports:
             - containerPort: 5000
           resources: {}
-          volumeMounts:
-            - mountPath: /usr/src/server
-              name: server-claim0
       restartPolicy: Always
-      volumes:
-        - name: server-claim0
-          persistentVolumeClaim:
-            claimName: server-claim0
 status: {}

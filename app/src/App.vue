@@ -68,7 +68,7 @@ export default {
   }),
   mounted: async function () {
     await axios
-      .get(`/api/healthcheck`)
+      .get(`${process.env.VUE_APP_FLASK_HOST}/healthcheck`)
       .then((response) => {
         console.log(response.data);
       })

@@ -2,35 +2,19 @@ version: "3"
 services:
   app:
     build: ./app
-    command: "http-server dist --host 0.0.0.0"
+    command: "npm run serve"
     ports:
       - "8080:8080"
-    volumes:
-      - "./app:/usr/src/app"
     env_file:
       - ".env"
   server:
     build: ./server
-    entrypoint: entrypoint.sh
     ports:
       - "5000:5000"
-    volumes:
-      - "./server:/usr/src/server"
     depends_on:
       - redis
     env_file:
       - ".env"
-  # celery:
-  #   build: ./server/tasks
-  #   command: "celery --app tasks.app worker --loglevel info --pool=prefork --concurrency=4 --max-tasks-per-child=1"
-  #   user: nobody
-  #   volumes:
-  #     - "./server:/usr/src/server"
-  #   depends_on:
-  #     - server
-  #     - redis
-  #   env_file:
-  #     - ".env"
   redis:
     image: redis:latest
     ports:

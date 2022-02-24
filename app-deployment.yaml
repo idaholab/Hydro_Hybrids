@@ -55,22 +55,10 @@ spec:
                 configMapKeyRef:
                   key: VUE_APP_FLASK_HOST
                   name: env
-            - name: VUE_APP_NODE_ENV
-              valueFrom:
-                configMapKeyRef:
-                  key: VUE_APP_NODE_ENV
-                  name: env
           image: app
           name: app
           ports:
             - containerPort: 8080
           resources: {}
-          volumeMounts:
-            - mountPath: /usr/src/app
-              name: app-claim0
       restartPolicy: Always
-      volumes:
-        - name: app-claim0
-          persistentVolumeClaim:
-            claimName: app-claim0
 status: {}
