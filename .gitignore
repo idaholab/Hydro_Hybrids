@@ -1,5 +1,6 @@
-.env
+.env*
 .vscode
+env-configmap.yaml
 
 # Front End
 dist
