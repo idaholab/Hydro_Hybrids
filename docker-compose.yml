@@ -11,8 +11,11 @@ services:
       - ".env"
   server:
     build: ./server
+    command: "gunicorn --bind 0.0.0.0:80 wsgi:app"
+    volumes:
+      - "./server:/usr/src/server"
     ports:
-      - "5000:5000"
+      - "5000:80"
     depends_on:
       - redis
     env_file:
