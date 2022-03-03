@@ -1,3 +1,3 @@
 #! /bin/bash
 
-/bin/bash celery.sh && gunicorn app:app -b 0.0.0.0:5000
+/bin/bash celery.sh && gunicorn --bind 0.0.0.0:80 wsgi:app
