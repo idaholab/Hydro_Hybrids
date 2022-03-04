@@ -13,8 +13,7 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: server
-  strategy:
-    type: Recreate
+  strategy: {}
   template:
     metadata:
       annotations:
@@ -54,7 +53,7 @@ spec:
           image: server
           name: server
           ports:
-            - containerPort: 5000
+            - containerPort: 80
           resources: {}
       restartPolicy: Always
 status: {}
