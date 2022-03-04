@@ -78,7 +78,7 @@ export default {
     site: null,
     uuid: null,
   }),
-  mounted: function() {
+  mounted: function () {
     this.site = this.$store.getters["site/data"].project_name;
     this.uuid = this.$store.getters.uuid;
     console.log(this.uuid);
@@ -87,14 +87,14 @@ export default {
     //
   },
   methods: {
-    flask_host: function() {
-      return `${process.env.VUE_APP_FLASK_HOST}`;
+    flask_host: function () {
+      return `api`;
     },
     plots(filename) {
-      return `${process.env.VUE_APP_FLASK_HOST}/static/${this.uuid}/plots/${filename}_0_${this.site}.png`;
+      return `api/static/${this.uuid}/plots/${filename}_0_${this.site}.png`;
     },
     csv(filename) {
-      return `${process.env.VUE_APP_FLASK_HOST}/static/${this.uuid}/csv/${filename}_${this.site}.csv`;
+      return `api/static/${this.uuid}/csv/${filename}_${this.site}.csv`;
     },
     async download() {
       this.$store.commit("working", true);

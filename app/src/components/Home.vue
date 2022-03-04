@@ -54,7 +54,7 @@ export default {
     task_id: null,
   }),
   watch: {
-    celery_link: function() {
+    celery_link: function () {
       this.status();
     },
   },
@@ -113,15 +113,15 @@ export default {
       }
 
       await axios
-        .post(`http://localhost:5000/predict`, form, {
+        .post(`api/predict`, form, {
           headers: {
             "content-type": "multipart/form-data",
           },
         })
         .then((response) => {
           if (response.status === 202) {
-            this.celery_link = response.headers["location"];
             this.task_id = response.headers["task_id"];
+            this.celery_link = `api/tasks/status/${this.task_id}`;
           }
         })
         .catch((error) => {
@@ -133,7 +133,7 @@ export default {
     async cancel() {
       this.$store.commit("working", false);
       await axios
-        .get(`http://localhost:5000/tasks/kill`, {
+        .get(`api/tasks/kill`, {
           params: {
             task_id: this.task_id,
           },

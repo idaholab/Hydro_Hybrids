@@ -21,9 +21,7 @@
 
       <hr />
       <br />
-      <h3>
-        1. Gather Generation and Electricity Market Price Time-Series
-      </h3>
+      <h3>1. Gather Generation and Electricity Market Price Time-Series</h3>
       <p>
         Two files are required corresponding to “Energy Generation Profile” and
         “Electricity Market Price Profile.”
@@ -148,24 +146,18 @@ export default {
     async samples() {
       // Get the Energy Generation sample
       let energy_sample = await axios
-        .get(
-          `${process.env.VUE_APP_FLASK_HOST}/static/samples/EnergyGenerationProfile.csv`,
-          {
-            responseType: "arraybuffer",
-          }
-        )
+        .get(`api/static/samples/EnergyGenerationProfile.csv`, {
+          responseType: "arraybuffer",
+        })
         .then((response) => {
           return response.data;
         });
 
       // Get the Price sample
       let profile_sample = await axios
-        .get(
-          `${process.env.VUE_APP_FLASK_HOST}/static/samples/PriceProfile.csv`,
-          {
-            responseType: "arraybuffer",
-          }
-        )
+        .get(`api/static/samples/PriceProfile.csv`, {
+          responseType: "arraybuffer",
+        })
         .then((response) => {
           return response.data;
         });
