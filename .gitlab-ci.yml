@@ -14,14 +14,13 @@ build:
       > /kaniko/.docker/config.json
     - "/kaniko/executor --context $CI_PROJECT_DIR/server --dockerfile $CI_PROJECT_DIR/server/Dockerfile
       --destination $CI_REGISTRY/$CI_REGISTRY_PATH/hydro-hybrids-flask:$CI_PIPELINE_IID"
-    - "/kaniko/executor --context $CI_PROJECT_DIR/server/tasks --dockerfile $CI_PROJECT_DIR/server/tasks/Dockerfile
-      --destination $CI_REGISTRY/$CI_REGISTRY_PATH/hydro-hybrids-celery:$CI_PIPELINE_IID"
     - "/kaniko/executor --context $CI_PROJECT_DIR/app --dockerfile $CI_PROJECT_DIR/app/Dockerfile
       --destination $CI_REGISTRY/$CI_REGISTRY_PATH/hydro-hybrids-vue:$CI_PIPELINE_IID"
   only:
-    - feature/gitlab
+    - development
+    - main
 
-develpment:
+development:
   stage: deploy
   image: mcr.microsoft.com/azure-cli:latest
   script:
@@ -33,4 +32,4 @@ develpment:
   environment:
     name: development
   only:
-    - feature/gitlab
+    - development
