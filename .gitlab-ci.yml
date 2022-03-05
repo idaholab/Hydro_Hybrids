@@ -33,3 +33,4 @@ development:
     name: development
   only:
     - development
+    - main
