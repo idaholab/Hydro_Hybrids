@@ -13,8 +13,7 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: app
-  strategy:
-    type: Recreate
+  strategy: {}
   template:
     metadata:
       annotations:
@@ -25,11 +24,7 @@ spec:
         io.kompose.service: app
     spec:
       containers:
-        - args:
-            - npm
-            - run
-            - serve
-          env:
+        - env:
             - name: CELERY_BACKEND
               valueFrom:
                 configMapKeyRef:
@@ -58,7 +53,7 @@ spec:
           image: app
           name: app
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           resources: {}
       restartPolicy: Always
 status: {}

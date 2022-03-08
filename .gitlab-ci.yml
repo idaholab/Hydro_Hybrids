@@ -18,7 +18,6 @@ build:
       --destination $CI_REGISTRY/$CI_REGISTRY_PATH/hydro-hybrids-vue:$CI_PIPELINE_IID"
   only:
     - development
-    - main
 
 development:
   stage: deploy
