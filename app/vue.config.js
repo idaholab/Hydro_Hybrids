@@ -25,5 +25,8 @@ module.exports = {
       poll: 1000,
       ignored: /node_modules/
     }
-  }
+  },
+  publicPath: process.env.NODE_ENV === 'production'
+  ? '/public/'
+  : '/'
 }
