@@ -66,9 +66,9 @@ export default {
   data: () => ({
     //
   }),
-  mounted: async function () {
+  mounted: async function() {
     await axios
-      .get(`api/healthcheck`)
+      .get(`http://localhost:5000/healthcheck`)
       .then((response) => {
         console.log(response.data);
       })

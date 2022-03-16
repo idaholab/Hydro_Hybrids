@@ -54,7 +54,7 @@ export default {
     task_id: null,
   }),
   watch: {
-    celery_link: function () {
+    celery_link: function() {
       this.status();
     },
   },
@@ -113,7 +113,7 @@ export default {
       }
 
       await axios
-        .post(`api/predict`, form, {
+        .post(`http://localhost:5000/predict`, form, {
           headers: {
             "content-type": "multipart/form-data",
           },
@@ -122,6 +122,29 @@ export default {
           if (response.status === 202) {
             this.task_id = response.headers["task_id"];
             this.celery_link = `api/tasks/status/${this.task_id}`;
+          } else if (response.status === 200) {
+            let data = response.data;
+
+            this.$store.commit(
+              "data/battery_degredation_annual",
+              data.csv["Battery_Degradation_Annual"]
+            );
+            this.$store.commit(
+              "data/battery_degredation_daily",
+              data.csv["Battery_Degradation_Daily"]
+            );
+            this.$store.commit(
+              "data/financial_performnce_annual",
+              data.csv["Financial_Performance_Annual"]
+            );
+            this.$store.commit(
+              "data/financial_performance_daily",
+              data.csv["Financial_Performance_Daily"]
+            );
+
+            this.$store.commit("data/payback_plot", data.plots["Payback_Plot"]);
+            this.$store.commit("data/payback_plot", data.plots["ROI_Plot"]);
+            this.$store.commit("data/payback_plot", data.plots["Revenue_Plot"]);
           }
         })
         .catch((error) => {
