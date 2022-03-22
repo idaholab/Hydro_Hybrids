@@ -1,15 +1,15 @@
 # %matplotlib inline
+from tasks.app import app
+from .model import model_tools as tools
+import importlib
+from pickle import load
+from tensorflow.keras.models import load_model
+import os
+from helpers.encode import encode_plot
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from helpers.encode import encode_plot
-import os
-from tensorflow.keras.models import load_model
-from pickle import load
-import importlib
-from .model import model_tools as tools
-import matplotlib.pyplot as plt
-from tasks.app import app
+plt.switch_backend('agg')
 
 
 def model(dict1, energy_profile, price_profile):

@@ -55,7 +55,7 @@ export default new Vuex.Store({
       context.dispatch('profiles/clear');
       context.dispatch('financial/clear');
       context.dispatch('battery/clear');
-      context.dispatch('data/cear');
+      context.dispatch('data/clear');
       
       context.commit('uuid', null);
       context.commit('error', null);

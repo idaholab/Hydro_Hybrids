@@ -21,7 +21,12 @@
     </v-row>
 
     <v-row justify="center">
-      <v-btn v-if="this.celery.state === 'SUCCESS'" to="/plots">Preview</v-btn>
+      <template v-if="this.celery.state === 'SUCCESS'">
+        <v-btn to="/plots">Preview</v-btn>
+      </template>
+      <template v-if="this.plots === true">
+        <v-btn to="/plots">Preview</v-btn>
+      </template>
     </v-row>
 
     <v-row justify="center">
@@ -134,7 +139,7 @@ export default {
               data.csv["Battery_Degradation_Daily"]
             );
             this.$store.commit(
-              "data/financial_performnce_annual",
+              "data/financial_performance_annual",
               data.csv["Financial_Performance_Annual"]
             );
             this.$store.commit(
@@ -143,8 +148,11 @@ export default {
             );
 
             this.$store.commit("data/payback_plot", data.plots["Payback_Plot"]);
-            this.$store.commit("data/payback_plot", data.plots["ROI_Plot"]);
-            this.$store.commit("data/payback_plot", data.plots["Revenue_Plot"]);
+            this.$store.commit("data/roi_plot", data.plots["ROI_Plot"]);
+            this.$store.commit("data/revenue_plot", data.plots["Revenue_Plot"]);
+
+            this.$store.commit("working", false);
+            this.plots = true;
           }
         })
         .catch((error) => {

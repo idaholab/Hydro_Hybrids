@@ -20,8 +20,7 @@
         <v-col cols="4">
           <v-img
             :src="
-              'data:image/jpeg;base64,' +
-                this.store.getters['data/revenue_plot']
+              'data:image/jpeg;base64,' + $store.getters['data/revenue_plot']
             "
             height="100%"
             width="100%"
@@ -41,9 +40,7 @@
         </v-col>
         <v-col cols="4">
           <v-img
-            :src="
-              'data:image/jpeg;base64,' + this.store.getters['data/roi_plot']
-            "
+            :src="'data:image/jpeg;base64,' + $store.getters['data/roi_plot']"
             height="100%"
             width="100%"
           ></v-img>
@@ -63,8 +60,7 @@
         <v-col cols="4">
           <v-img
             :src="
-              'data:image/jpeg;base64,' +
-                this.store.getters['data/payback_plot']
+              'data:image/jpeg;base64,' + $store.getters['data/payback_plot']
             "
           ></v-img>
         </v-col>
@@ -91,18 +87,15 @@ export default {
     this.site = this.$store.getters["site/data"].project_name;
     this.uuid = this.$store.getters.uuid;
     console.log(this.uuid);
-    console.log(this.$store.getters["data"]);
+    console.log(this.$store.getters["data/data"]);
+    console.log(this.$store.getters["data/revenue_plot"]);
+    console.log(this.$store.getters["data/roi_plot"]);
+    console.log(this.$store.getters["data/payback_plot"]);
   },
   computed: {
     //
   },
   methods: {
-    flask_host: function() {
-      return `api`;
-    },
-    csv(filename) {
-      return `api/static/${this.uuid}/csv/${filename}_${this.site}.csv`;
-    },
     async download() {
       this.$store.commit("working", true);
 
@@ -133,15 +126,15 @@ export default {
       let zip = new JSZip();
 
       zip.folder("plots").file(`RevenuePlot_0_${this.site}.png`, revenue_plot, {
-        binary: true,
+        base64: true,
       });
       zip.folder("plots").file(`ROIPlot_0_${this.site}.png`, return_plot, {
-        binary: true,
+        base64: true,
       });
       zip
         .folder("plots")
         .file(`PaybackPeriodPlot_0_${this.site}.png`, payback_plot, {
-          binary: true,
+          base64: true,
         });
 
       zip

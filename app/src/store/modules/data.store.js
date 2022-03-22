@@ -14,7 +14,15 @@ const state = {
 
 
 const getters = {
-    data: (state) => state
+    data: (state) => state,
+
+    battery_degredation_daily: (state) => state.csv.battery_degredation_daily,
+    battery_degredation_annual: (state) => state.csv.battery_degredation_annual,
+    financial_performance_daily: (state) => state.csv.financial_performance_daily,
+    financial_performance_annual: (state) => state.csv.financial_performance_annual,
+    revenue_plot: (state) => state.plots.revenue_plot,
+    roi_plot: (state) => state.plots.roi_plot,
+    payback_plot: (state) => state.plots.payback_plot
 }
 
 const mutations = {
