@@ -24,7 +24,7 @@
       <template v-if="this.celery.state === 'SUCCESS'">
         <v-btn to="/plots">Preview</v-btn>
       </template>
-      <template v-if="this.plots === true">
+      <template v-if="this.$store.plots === true">
         <v-btn to="/plots">Preview</v-btn>
       </template>
     </v-row>
@@ -118,16 +118,18 @@ export default {
       }
 
       await axios
-        .post(`http://localhost:5000/predict`, form, {
+        .post(`api/predict`, form, {
           headers: {
             "content-type": "multipart/form-data",
           },
         })
         .then((response) => {
           if (response.status === 202) {
+            // Celery
             this.task_id = response.headers["task_id"];
             this.celery_link = `api/tasks/status/${this.task_id}`;
           } else if (response.status === 200) {
+            // HTTP
             let data = response.data;
 
             this.$store.commit(
@@ -152,7 +154,7 @@ export default {
             this.$store.commit("data/revenue_plot", data.plots["Revenue_Plot"]);
 
             this.$store.commit("working", false);
-            this.plots = true;
+            this.$store.commit["plots"] = true;
           }
         })
         .catch((error) => {

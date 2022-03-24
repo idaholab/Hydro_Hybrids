@@ -18,7 +18,8 @@ app.debug = True
 app.config['ROOT'] = os.path.dirname(os.path.abspath(__file__))
 
 # CORS
-cors = CORS(app, expose_headers=["location", "task_id"])
+cors = CORS(app, resources={r"/*": {"origins": "*"}},
+            expose_headers=["location", "task_id"])
 
 # Helpers
 
