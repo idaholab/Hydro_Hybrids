@@ -18,12 +18,8 @@ app.debug = True
 app.config['ROOT'] = os.path.dirname(os.path.abspath(__file__))
 
 # CORS
-cors = CORS(app, resources={r"/*": {"origins": "*"}},
+cors = CORS(app, resources={r"/*": {"origins": f"{os.environ.get('ALLOWED_ORIGINS')}"}},
             expose_headers=["location", "task_id"])
-
-# Helpers
-
-# Model
 
 # Routes
 app.register_blueprint(tasks, url_prefix="/tasks")
