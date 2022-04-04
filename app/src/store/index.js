@@ -6,6 +6,7 @@ import site from './modules/site.store';
 import profiles from './modules/profiles.store';
 import financial from './modules/financial.store';
 import battery from './modules/battery.store';
+import data from './modules/data.store';
 
 Vue.use(Vuex);
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
     site,
     profiles,
     financial,
-    battery
+    battery,
+    data
   },
   state: {
     uuid: null,
@@ -53,6 +55,7 @@ export default new Vuex.Store({
       context.dispatch('profiles/clear');
       context.dispatch('financial/clear');
       context.dispatch('battery/clear');
+      context.dispatch('data/clear');
       
       context.commit('uuid', null);
       context.commit('error', null);

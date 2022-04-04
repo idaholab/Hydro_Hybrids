@@ -19,7 +19,9 @@
         </v-col>
         <v-col cols="4">
           <v-img
-            :src="this.plots(`RevenuePlot`)"
+            :src="
+              'data:image/jpeg;base64,' + $store.getters['data/revenue_plot']
+            "
             height="100%"
             width="100%"
           ></v-img>
@@ -38,7 +40,7 @@
         </v-col>
         <v-col cols="4">
           <v-img
-            :src="this.plots(`ROIPlot`)"
+            :src="'data:image/jpeg;base64,' + $store.getters['data/roi_plot']"
             height="100%"
             width="100%"
           ></v-img>
@@ -56,7 +58,11 @@
           sizes assessed.
         </v-col>
         <v-col cols="4">
-          <v-img :src="this.plots(`PaybackPeriodPlot`)"></v-img>
+          <v-img
+            :src="
+              'data:image/jpeg;base64,' + $store.getters['data/payback_plot']
+            "
+          ></v-img>
         </v-col>
       </v-row>
       <v-row justify="center">
@@ -67,7 +73,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 
@@ -78,97 +83,58 @@ export default {
     site: null,
     uuid: null,
   }),
-  mounted: function () {
+  mounted: function() {
     this.site = this.$store.getters["site/data"].project_name;
     this.uuid = this.$store.getters.uuid;
     console.log(this.uuid);
+    console.log(this.$store.getters["data/data"]);
+    console.log(this.$store.getters["data/revenue_plot"]);
+    console.log(this.$store.getters["data/roi_plot"]);
+    console.log(this.$store.getters["data/payback_plot"]);
   },
   computed: {
     //
   },
   methods: {
-    flask_host: function () {
-      return `api`;
-    },
-    plots(filename) {
-      return `api/static/${this.uuid}/plots/${filename}_0_${this.site}.png`;
-    },
-    csv(filename) {
-      return `api/static/${this.uuid}/csv/${filename}_${this.site}.csv`;
-    },
     async download() {
       this.$store.commit("working", true);
 
-      let revenue_plot = await axios
-        .get(`${this.plots("RevenuePlot")}`, {
-          responseType: "arraybuffer",
-        })
-        .then((response) => {
-          return response.data;
-        });
+      let revenue_plot = this.$store.getters["data/revenue_plot"];
 
-      let return_plot = await axios
-        .get(`${this.plots("ROIPlot")}`, {
-          responseType: "arraybuffer",
-        })
-        .then((response) => {
-          return response.data;
-        });
+      let return_plot = this.$store.getters["data/roi_plot"];
 
-      let payback_plot = await axios
-        .get(`${this.plots("PaybackPeriodPlot")}`, {
-          responseType: "arraybuffer",
-        })
-        .then((response) => {
-          return response.data;
-        });
+      let payback_plot = this.$store.getters["data/payback_plot"];
 
       // Get the .csv
-      let daily_revenue_csv = await axios
-        .get(`${this.csv("PredictedDailyRevenueData")}`, {
-          responseType: "arraybuffer",
-        })
-        .then((response) => {
-          return response.data;
-        });
+      let daily_revenue_csv = this.$store.getters[
+        "data/financial_performance_daily"
+      ];
 
-      let annual_revenue_csv = await axios
-        .get(`${this.csv("PredictedAnnualFinancialPerformance")}`, {
-          responseType: "arraybuffer",
-        })
-        .then((response) => {
-          return response.data;
-        });
+      let annual_revenue_csv = this.$store.getters[
+        "data/financial_performance_annual"
+      ];
 
-      let daily_battery_csv = await axios
-        .get(`${this.csv("PredictedDailyBatteryDegradation")}`, {
-          responseType: "arraybuffer",
-        })
-        .then((response) => {
-          return response.data;
-        });
+      let daily_battery_csv = this.$store.getters[
+        "data/battery_degredation_daily"
+      ];
 
-      let annual_battery_csv = await axios
-        .get(`${this.csv("PredictedAnnualBatteryDegradation")}`, {
-          responseType: "arraybuffer",
-        })
-        .then((response) => {
-          return response.data;
-        });
+      let annual_battery_csv = this.$store.getters[
+        "data/battery_degredation_annual"
+      ];
 
       // Load them into a .zip
       let zip = new JSZip();
 
       zip.folder("plots").file(`RevenuePlot_0_${this.site}.png`, revenue_plot, {
-        binary: true,
+        base64: true,
       });
       zip.folder("plots").file(`ROIPlot_0_${this.site}.png`, return_plot, {
-        binary: true,
+        base64: true,
       });
       zip
         .folder("plots")
         .file(`PaybackPeriodPlot_0_${this.site}.png`, payback_plot, {
-          binary: true,
+          base64: true,
         });
 
       zip

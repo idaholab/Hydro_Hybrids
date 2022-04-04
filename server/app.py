@@ -18,11 +18,8 @@ app.debug = True
 app.config['ROOT'] = os.path.dirname(os.path.abspath(__file__))
 
 # CORS
-cors = CORS(app, expose_headers=["location", "task_id"])
-
-# Helpers
-
-# Model
+cors = CORS(app, resources={r"/*": {"origins": f"{os.environ.get('ALLOWED_ORIGINS')}"}},
+            expose_headers=["location", "task_id"])
 
 # Routes
 app.register_blueprint(tasks, url_prefix="/tasks")
@@ -56,40 +53,17 @@ def predict():
         validate_schema(energy_profile, "electricity")
         validate_schema(price_profile, "price")
 
-        try:
-            os.mkdir(f"{app.config['ROOT']}/static/{data['uuid']}")
-            os.mkdir(f"{app.config['ROOT']}/static/{data['uuid']}/upload")
-            os.mkdir(f"{app.config['ROOT']}/static/{data['uuid']}/plots")
-            os.mkdir(f"{app.config['ROOT']}/static/{data['uuid']}/csv")
+        energy_profile.stream.seek(0)
+        price_profile.stream.seek(0)
 
-            energy_profile.stream.seek(0)
-            price_profile.stream.seek(0)
-
-            energy_profile.save(os.path.join(
-                f"{app.config['ROOT']}/static/{data['uuid']}/upload", secure_filename(energy_profile.filename)))
-            price_profile.save(os.path.join(
-                f"{app.config['ROOT']}/static/{data['uuid']}/upload", secure_filename(price_profile.filename)))
-
-            os.chmod(f"{app.config['ROOT']}/static/{data['uuid']}", 0o777)
-            os.chmod(
-                f"{app.config['ROOT']}/static/{data['uuid']}/upload", 0o777)
-            os.chmod(
-                f"{app.config['ROOT']}/static/{data['uuid']}/plots", 0o777)
-            os.chmod(f"{app.config['ROOT']}/static/{data['uuid']}/csv", 0o777)
-        except Exception as e:
-            shutil.rmtree(
-                f"{app.config['ROOT']}/static/{data['uuid']}", ignore_errors=True)
-            return bad_request(str(e))
-
-        task = model.delay(data, secure_filename(
-            energy_profile.filename), secure_filename(price_profile.filename))
-
+        Revenue_Plot, ROI_Plot, Payback_Plot, Battery_Degradation_Daily, Battery_Degradation_Annual, Financial_Performance_Daily, Financial_Performance_Annual = model(
+            data, energy_profile, price_profile)
     except Exception as e:
-        shutil.rmtree(
-            f"{app.config['ROOT']}/static/{data['uuid']}", ignore_errors=True)
         return bad_request(str(e))
 
-    return jsonify({}), 202, {'location': url_for('tasks.status', task_id=task.task_id), 'task_id': task.task_id}
+    return {"plots": {"Revenue_Plot": Revenue_Plot, "ROI_Plot": ROI_Plot, "Payback_Plot": Payback_Plot},
+            "csv": {"Battery_Degradation_Daily": Battery_Degradation_Daily, "Battery_Degradation_Annual": Battery_Degradation_Annual, "Financial_Performance_Daily": Financial_Performance_Daily, "Financial_Performance_Annual": Financial_Performance_Annual}
+            }
 
 
 if __name__ == '__main__':

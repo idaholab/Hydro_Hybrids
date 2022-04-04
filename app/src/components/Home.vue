@@ -21,7 +21,12 @@
     </v-row>
 
     <v-row justify="center">
-      <v-btn v-if="this.celery.state === 'SUCCESS'" to="/plots">Preview</v-btn>
+      <template v-if="this.celery.state === 'SUCCESS'">
+        <v-btn to="/plots">Preview</v-btn>
+      </template>
+      <template v-if="$store.getters.plots === true">
+        <v-btn to="/plots">Preview</v-btn>
+      </template>
     </v-row>
 
     <v-row justify="center">
@@ -54,7 +59,7 @@ export default {
     task_id: null,
   }),
   watch: {
-    celery_link: function () {
+    celery_link: function() {
       this.status();
     },
   },
@@ -120,8 +125,36 @@ export default {
         })
         .then((response) => {
           if (response.status === 202) {
+            // Celery
             this.task_id = response.headers["task_id"];
             this.celery_link = `api/tasks/status/${this.task_id}`;
+          } else if (response.status === 200) {
+            // HTTP
+            let data = response.data;
+
+            this.$store.commit(
+              "data/battery_degredation_annual",
+              data.csv["Battery_Degradation_Annual"]
+            );
+            this.$store.commit(
+              "data/battery_degredation_daily",
+              data.csv["Battery_Degradation_Daily"]
+            );
+            this.$store.commit(
+              "data/financial_performance_annual",
+              data.csv["Financial_Performance_Annual"]
+            );
+            this.$store.commit(
+              "data/financial_performance_daily",
+              data.csv["Financial_Performance_Daily"]
+            );
+
+            this.$store.commit("data/payback_plot", data.plots["Payback_Plot"]);
+            this.$store.commit("data/roi_plot", data.plots["ROI_Plot"]);
+            this.$store.commit("data/revenue_plot", data.plots["Revenue_Plot"]);
+
+            this.$store.commit("working", false);
+            this.$store.commit("plots", true);
           }
         })
         .catch((error) => {
