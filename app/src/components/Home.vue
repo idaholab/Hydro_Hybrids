@@ -24,7 +24,7 @@
       <template v-if="this.celery.state === 'SUCCESS'">
         <v-btn to="/plots">Preview</v-btn>
       </template>
-      <template v-if="this.$store.plots === true">
+      <template v-if="$store.getters.plots === true">
         <v-btn to="/plots">Preview</v-btn>
       </template>
     </v-row>
@@ -154,7 +154,7 @@ export default {
             this.$store.commit("data/revenue_plot", data.plots["Revenue_Plot"]);
 
             this.$store.commit("working", false);
-            this.$store.commit["plots"] = true;
+            this.$store.commit("plots", true);
           }
         })
         .catch((error) => {
