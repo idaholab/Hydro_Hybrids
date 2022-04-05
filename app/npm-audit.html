@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.1/build/styles/atom-one-dark.min.css">
+
+    <title>NPM Audit Report</title>
+    <meta name="description" content="20 known vulnerabilities found.">
+
+    <style>
+        pre {
+            background-color: #333333;
+            padding: 15px;
+        }
+
+        pre code {
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body class="mb-3">
+    <div class="container">
+        <h1 class="mt-5 text-center">NPM Audit Report</h1>
+
+        <div class="text-center">
+            <div class="card-deck my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            20
+                        </h5>
+                        <p class="card-text">Known vulnerable dependencies</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            1,370
+                        </h5>
+                        <p class="card-text">Dependencies</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            April 5th 2022, 9:07:57 pm
+                        </h5>
+                        <p class="card-text">Last updated</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-deck my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            0
+                        </h5>
+                        <p class="card-text">
+                            <span class="badge badge-danger">critical</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            13
+                        </h5>
+                        <p class="card-text">
+                            <span class="badge badge-warning">high</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            7
+                        </h5>
+                        <p class="card-text">
+                            <span class="badge badge-secondary">moderate</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            0
+                        </h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">low</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            0
+                        </h5>
+                        <p class="card-text">
+                            <span class="badge badge-info">info</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+
+                <table id="advisories" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Module</th>
+                            <th scope="col">Severity</th>
+                            <th scope="col">Issues</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/@intervolga/optimize-cssnano-plugin" target="_blank" rel="noopener">@intervolga/optimize-cssnano-plugin</a>
+                            </th>
+                            <td data-order="3"><span
+                                    class="badge badge-secondary">moderate</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-@intervolga/optimize-cssnano-plugin">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/@vue/cli-plugin-eslint" target="_blank" rel="noopener">@vue/cli-plugin-eslint</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-@vue/cli-plugin-eslint">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/@vue/cli-service" target="_blank" rel="noopener">@vue/cli-service</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-@vue/cli-service">4</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/chokidar" target="_blank" rel="noopener">chokidar</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-chokidar">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/copy-webpack-plugin" target="_blank" rel="noopener">copy-webpack-plugin</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-copy-webpack-plugin">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/css-select" target="_blank" rel="noopener">css-select</a>
+                            </th>
+                            <td data-order="3"><span
+                                    class="badge badge-secondary">moderate</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-css-select">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/cssnano" target="_blank" rel="noopener">cssnano</a>
+                            </th>
+                            <td data-order="3"><span
+                                    class="badge badge-secondary">moderate</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-cssnano">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/cssnano-preset-default" target="_blank" rel="noopener">cssnano-preset-default</a>
+                            </th>
+                            <td data-order="3"><span
+                                    class="badge badge-secondary">moderate</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-cssnano-preset-default">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/fast-glob" target="_blank" rel="noopener">fast-glob</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-fast-glob">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/glob-parent" target="_blank" rel="noopener">glob-parent</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-glob-parent">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/globby" target="_blank" rel="noopener">globby</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-globby">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/node-forge" target="_blank" rel="noopener">node-forge</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-node-forge">2</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/nth-check" target="_blank" rel="noopener">nth-check</a>
+                            </th>
+                            <td data-order="3"><span
+                                    class="badge badge-secondary">moderate</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-nth-check">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/postcss-svgo" target="_blank" rel="noopener">postcss-svgo</a>
+                            </th>
+                            <td data-order="3"><span
+                                    class="badge badge-secondary">moderate</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-postcss-svgo">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/selfsigned" target="_blank" rel="noopener">selfsigned</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-selfsigned">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/svgo" target="_blank" rel="noopener">svgo</a>
+                            </th>
+                            <td data-order="3"><span
+                                    class="badge badge-secondary">moderate</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-svgo">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/watchpack" target="_blank" rel="noopener">watchpack</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-watchpack">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/watchpack-chokidar2" target="_blank" rel="noopener">watchpack-chokidar2</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-watchpack-chokidar2">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/webpack" target="_blank" rel="noopener">webpack</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-webpack">1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="https://npmjs.com/package/webpack-dev-server" target="_blank" rel="noopener">webpack-dev-server</a>
+                            </th>
+                            <td data-order="2"><span
+                                    class="badge badge-warning">high</span></td>
+                            <td>
+                                <a href="" data-toggle="modal"
+                                    data-target="#advisory-modal-webpack-dev-server">2</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-@intervolga/optimize-cssnano-plugin">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-secondary">moderate</span>
+                        <a href="https://npmjs.com/package/@intervolga/optimize-cssnano-plugin" target="_blank" rel="noopener"> @intervolga/optimize-cssnano-plugin</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-cssnano-preset-default"
+                                data-dismiss="modal">cssnano-preset-default</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-@vue/cli-plugin-eslint">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/@vue/cli-plugin-eslint" target="_blank" rel="noopener"> @vue/cli-plugin-eslint</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-globby"
+                                data-dismiss="modal">globby</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-@vue/cli-service">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/@vue/cli-service" target="_blank" rel="noopener"> @vue/cli-service</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-@intervolga/optimize-cssnano-plugin"
+                                data-dismiss="modal">@intervolga/optimize-cssnano-plugin</a>
+                        </li>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-copy-webpack-plugin"
+                                data-dismiss="modal">copy-webpack-plugin</a>
+                        </li>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-cssnano"
+                                data-dismiss="modal">cssnano</a>
+                        </li>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-webpack-dev-server"
+                                data-dismiss="modal">webpack-dev-server</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-chokidar">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/chokidar" target="_blank" rel="noopener"> chokidar</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-glob-parent"
+                                data-dismiss="modal">glob-parent</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-copy-webpack-plugin">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/copy-webpack-plugin" target="_blank" rel="noopener"> copy-webpack-plugin</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-glob-parent"
+                                data-dismiss="modal">glob-parent</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-css-select">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-secondary">moderate</span>
+                        <a href="https://npmjs.com/package/css-select" target="_blank" rel="noopener"> css-select</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-nth-check"
+                                data-dismiss="modal">nth-check</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-cssnano">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-secondary">moderate</span>
+                        <a href="https://npmjs.com/package/cssnano" target="_blank" rel="noopener"> cssnano</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-cssnano-preset-default"
+                                data-dismiss="modal">cssnano-preset-default</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-cssnano-preset-default">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-secondary">moderate</span>
+                        <a href="https://npmjs.com/package/cssnano-preset-default" target="_blank" rel="noopener"> cssnano-preset-default</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-postcss-svgo"
+                                data-dismiss="modal">postcss-svgo</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-fast-glob">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/fast-glob" target="_blank" rel="noopener"> fast-glob</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-glob-parent"
+                                data-dismiss="modal">glob-parent</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-glob-parent">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/glob-parent" target="_blank" rel="noopener"> glob-parent</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li><span class="badge badge-warning">high</span>
+                            Regular expression denial of service in glob-parent - <a href="https://github.com/advisories/GHSA-ww39-953v-wcq6">https://github.com/advisories/GHSA-ww39-953v-wcq6</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-globby">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/globby" target="_blank" rel="noopener"> globby</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-fast-glob"
+                                data-dismiss="modal">fast-glob</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-node-forge">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/node-forge" target="_blank" rel="noopener"> node-forge</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li><span class="badge badge-secondary">moderate</span>
+                            Open Redirect in node-forge - <a href="https://github.com/advisories/GHSA-8fr3-hfg3-gpgp">https://github.com/advisories/GHSA-8fr3-hfg3-gpgp</a>
+                        </li>
+                        <li><span class="badge badge-warning">high</span>
+                            Improper Verification of Cryptographic Signature in node-forge - <a href="https://github.com/advisories/GHSA-x4jg-mjrx-434g">https://github.com/advisories/GHSA-x4jg-mjrx-434g</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-nth-check">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-secondary">moderate</span>
+                        <a href="https://npmjs.com/package/nth-check" target="_blank" rel="noopener"> nth-check</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li><span class="badge badge-secondary">moderate</span>
+                            Inefficient Regular Expression Complexity in nth-check - <a href="https://github.com/advisories/GHSA-rp65-9cf3-cjxr">https://github.com/advisories/GHSA-rp65-9cf3-cjxr</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-postcss-svgo">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-secondary">moderate</span>
+                        <a href="https://npmjs.com/package/postcss-svgo" target="_blank" rel="noopener"> postcss-svgo</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-svgo"
+                                data-dismiss="modal">svgo</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-selfsigned">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/selfsigned" target="_blank" rel="noopener"> selfsigned</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-node-forge"
+                                data-dismiss="modal">node-forge</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-svgo">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-secondary">moderate</span>
+                        <a href="https://npmjs.com/package/svgo" target="_blank" rel="noopener"> svgo</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-css-select"
+                                data-dismiss="modal">css-select</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-watchpack">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/watchpack" target="_blank" rel="noopener"> watchpack</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-watchpack-chokidar2"
+                                data-dismiss="modal">watchpack-chokidar2</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-watchpack-chokidar2">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/watchpack-chokidar2" target="_blank" rel="noopener"> watchpack-chokidar2</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-chokidar"
+                                data-dismiss="modal">chokidar</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-webpack">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/webpack" target="_blank" rel="noopener"> webpack</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-watchpack"
+                                data-dismiss="modal">watchpack</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="advisory-modal-webpack-dev-server">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="badge badge-warning">high</span>
+                        <a href="https://npmjs.com/package/webpack-dev-server" target="_blank" rel="noopener"> webpack-dev-server</a>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Findings</h3>
+                    <ul>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-chokidar"
+                                data-dismiss="modal">chokidar</a>
+                        </li>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#advisory-modal-selfsigned"
+                                data-dismiss="modal">selfsigned</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#advisories').DataTable({
+                order: [[2, 'asc']]
+            });
+        });
+    </script>
+</body>
+
+</html>
