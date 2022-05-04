@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from celery.app.control import Control
-from learning.refactor import model
+from learning.learning import model
 from tasks.app import app
 
 tasks = Blueprint("tasks", __name__)

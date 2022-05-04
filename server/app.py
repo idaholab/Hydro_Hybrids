@@ -1,6 +1,6 @@
 # Flask
 import os
-from blueprints.routes import tasks
+# from blueprints.routes import tasks
 from learning.learning import model
 from helpers.errors import bad_request
 from helpers.validation import validate_schema, allowed_extensions
