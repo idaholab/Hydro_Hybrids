@@ -1,15 +1,12 @@
 # Flask
-import stat
 import os
-from blueprints.routes import tasks
-from learning.refactor import model
+# from blueprints.routes import tasks
+from learning.learning import model
 from helpers.errors import bad_request
 from helpers.validation import validate_schema, allowed_extensions
 import json
 from flask_cors import CORS
-from werkzeug.utils import secure_filename
-import shutil
-from flask import Flask, request, jsonify, url_for
+from flask import Flask, request
 
 app = Flask(__name__)
 app.debug = True
@@ -22,7 +19,7 @@ cors = CORS(app, resources={r"/*": {"origins": f"{os.environ.get('ALLOWED_ORIGIN
             expose_headers=["location", "task_id"])
 
 # Routes
-app.register_blueprint(tasks, url_prefix="/tasks")
+# app.register_blueprint(tasks, url_prefix="/tasks")
 
 
 @app.route('/healthcheck', methods=['GET'])

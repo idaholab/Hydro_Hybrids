@@ -83,7 +83,7 @@ export default {
     site: null,
     uuid: null,
   }),
-  mounted: function() {
+  mounted: function () {
     this.site = this.$store.getters["site/data"].project_name;
     this.uuid = this.$store.getters.uuid;
     console.log(this.uuid);
@@ -106,21 +106,17 @@ export default {
       let payback_plot = this.$store.getters["data/payback_plot"];
 
       // Get the .csv
-      let daily_revenue_csv = this.$store.getters[
-        "data/financial_performance_daily"
-      ];
+      let daily_revenue_csv =
+        this.$store.getters["data/financial_performance_daily"];
 
-      let annual_revenue_csv = this.$store.getters[
-        "data/financial_performance_annual"
-      ];
+      let annual_revenue_csv =
+        this.$store.getters["data/financial_performance_annual"];
 
-      let daily_battery_csv = this.$store.getters[
-        "data/battery_degredation_daily"
-      ];
+      let daily_battery_csv =
+        this.$store.getters["data/battery_degredation_daily"];
 
-      let annual_battery_csv = this.$store.getters[
-        "data/battery_degredation_annual"
-      ];
+      let annual_battery_csv =
+        this.$store.getters["data/battery_degredation_annual"];
 
       // Load them into a .zip
       let zip = new JSZip();
