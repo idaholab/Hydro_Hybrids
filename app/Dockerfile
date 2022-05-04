@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
+RUN apk update && apk upgrade --available && sync
+
 RUN npm install
 
 COPY . .
