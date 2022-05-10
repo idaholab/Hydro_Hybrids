@@ -118,7 +118,7 @@ export default {
       }
 
       await axios
-        .post(`http://localhost:5000/predict`, form, {
+        .post(`api/predict`, form, {
           headers: {
             "content-type": "multipart/form-data",
           },
