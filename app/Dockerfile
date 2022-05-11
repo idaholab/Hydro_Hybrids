@@ -17,6 +17,8 @@ FROM nginx:latest as production-stage
 
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
+RUN apt-get update && apt-get -y upgrade
+
 WORKDIR /etc/nginx/conf.d
 RUN rm default.conf
 COPY nginx.conf .
