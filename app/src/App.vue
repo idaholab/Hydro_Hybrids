@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app absolute color="primary" class="toolbar">
+    <v-app-bar app absolute color="black" class="toolbar">
       <v-img max-width="250px" src="./assets/inl-banner.png"></v-img>
 
       <v-spacer></v-spacer>
@@ -38,6 +38,20 @@
             <v-img height="40px" contain src="./assets/nrel-logo.png"></v-img
           ></v-col>
         </v-row>
+        <v-row>
+          <v-col>
+            <v-img
+              height="120px"
+              contain
+              src="./assets/hydro-illustration-1.png"
+            ></v-img>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col style="display: flex; justify-content: center"
+            ><p style="font-size: 11px">Developed by Digital Engineering</p>
+          </v-col>
+        </v-row>
       </v-container>
     </v-navigation-drawer>
 
@@ -66,7 +80,7 @@ export default {
   data: () => ({
     //
   }),
-  mounted: async function() {
+  mounted: async function () {
     await axios
       .get(`api/healthcheck`)
       .then((response) => {
@@ -81,7 +95,7 @@ export default {
 
 <style scoped>
 /deep/ .v-toolbar__content {
-  border-bottom: 5px #8dc340 solid !important;
+  border-bottom: 5px #07519e solid !important;
 }
 
 .introduction {
@@ -92,7 +106,7 @@ export default {
   font-size: 11px;
 }
 
-.v-footer {
+/* .v-footer {
   background-color: white !important;
-}
+} */
 </style>

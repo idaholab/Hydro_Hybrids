@@ -1,14 +1,5 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col>
-        <v-img
-          height="350px"
-          contain
-          src="../assets/hydro-illustration-1.png"
-        ></v-img>
-      </v-col>
-    </v-row>
     <Form @submit="submit" @reset="reset" />
     <v-row justify="center" style="padding: 1rem">
       <v-btn
@@ -59,7 +50,7 @@ export default {
     task_id: null,
   }),
   watch: {
-    celery_link: function() {
+    celery_link: function () {
       this.status();
     },
   },
@@ -198,4 +189,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.v-main__wrap {
+  background-color: #f9f9f9;
+}
+</style>

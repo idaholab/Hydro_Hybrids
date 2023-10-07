@@ -1,16 +1,20 @@
 <template>
-  <v-container fill-height class="main">
+  <v-container style="display: flex; align-items: center" class="main">
     <v-row>
       <v-col cols="12">
         <v-card>
           <v-card-title>
-            <h3>Hydro + Storage Tool</h3>
+            <h3>Welcome to the Hydro + Storage Sizing Tool</h3>
           </v-card-title>
+          <v-card-subtitle
+            >Fill out each section of the form to generate a report using the
+            machine learning model.
+          </v-card-subtitle>
 
           <v-expansion-panels>
             <v-expansion-panel>
               <v-expansion-panel-header>
-                <p>Plant Information</p>
+                <v-card-subtitle>Plant Information</v-card-subtitle>
                 <template v-slot:actions v-if="!flags.site">
                   <v-icon color="error"> mdi-alert-circle </v-icon>
                 </template>
@@ -28,7 +32,10 @@
 
             <v-expansion-panel>
               <v-expansion-panel-header>
-                <p>Hydropower Generation & Electricity Market Prices</p>
+                <v-card-subtitle
+                  >Hydropower Generation & Electricity Market
+                  Prices</v-card-subtitle
+                >
                 <template v-slot:actions v-if="!flags.profiles">
                   <v-icon color="error"> mdi-alert-circle </v-icon>
                 </template>
@@ -45,7 +52,7 @@
 
             <v-expansion-panel>
               <v-expansion-panel-header>
-                <p>Financial Assumptions</p>
+                <v-card-subtitle>Financial Assumptions</v-card-subtitle>
                 <template v-slot:actions v-if="!flags.financial">
                   <v-icon color="error"> mdi-alert-circle </v-icon>
                 </template>
@@ -62,7 +69,9 @@
 
             <v-expansion-panel>
               <v-expansion-panel-header>
-                <p>Battery Search Space and Assumptions</p>
+                <v-card-subtitle
+                  >Battery Search Space and Assumptions</v-card-subtitle
+                >
                 <template v-slot:actions v-if="!flags.battery">
                   <v-icon color="error"> mdi-alert-circle </v-icon>
                 </template>
