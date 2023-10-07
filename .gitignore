@@ -1,15 +1,19 @@
 .env*
 .vscode
 env-configmap.yaml
+certs
+*.crt
 
 # Front End
+
 dist
 node_modules
 
 # Server
+
 Lib
 log
 Scripts
 share
 *.cfg
-*pycache*
+*pycache\*

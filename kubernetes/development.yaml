@@ -1,0 +1,111 @@
+# VUE
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hydrohybrids-vue
+  namespace: hydrohybrids-dev
+spec:
+  selector:
+    matchLabels:
+      app: hydrohybrids-vue
+  template:
+    metadata:
+      labels:
+        app: hydrohybrids-vue
+    spec:
+      containers:
+        - name: hydrohybrids-vue
+          image: ${CI_REGISTRY}/${CI_REGISTRY_PATH}:vue-dev-${GITHUB_RUN_NUMBER}
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "4Gi"
+              cpu: "1500m"
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hydrohybrids-vue-service
+  namespace: hydrohybrids-vue-dev
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: hydrohybrids-vue
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hydrohybrids-ingress
+  namespace: hydrohybrids-dev
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_clear_headers "strict-transport-security";
+      more_clear_headers "x-content-type-options";
+      more_clear_headers "x-frame-options";
+      more_clear_headers "content-security-policy";
+      proxy_set_header X-Forwarded-Proto https;
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+spec:
+  rules:
+    - host: hydrohybrids.azuredev.inl.gov
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hydrohybrids-vue-service
+                port:
+                  number: 80
+---
+
+---
+# FLASK
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hydrohybrids-flask
+  namespace: hydrohybrids-dev
+spec:
+  selector:
+    matchLabels:
+      app: hydrohybrids-flask
+  template:
+    metadata:
+      labels:
+        app: hydrohybrids-flask
+    spec:
+      containers:
+        - name: hydrohybrids-flask
+          image: ${CI_REGISTRY}/${CI_REGISTRY_PATH}:flask-dev-${GITHUB_RUN_NUMBER}
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "12Gi"
+              cpu: "4"
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hydrohybrids-flask-service
+  namespace: hydrohybrids-dev
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: hydrohybrids-flask
+---
+
