@@ -1,0 +1,10 @@
+pandas==1.3.5
+flask
+flask_cors
+numpy
+matplotlib
+tensorflow==2.8.0
+celery
+matplotlib==3.5
+protobuf==3.20.1
+scikit-learn==1.3

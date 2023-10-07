@@ -15,7 +15,7 @@ app.debug = True
 app.config['ROOT'] = os.path.dirname(os.path.abspath(__file__))
 
 # CORS
-cors = CORS(app, resources={r"/*": {"origins": f"{os.environ.get('ALLOWED_ORIGINS')}"}},
+cors = CORS(app, resources={r"/*": {"origins": "*"}},
             expose_headers=["location", "task_id"])
 
 # Routes
@@ -38,25 +38,26 @@ def predict():
     # Here is the dictionary of form data coming from the user
     data = json.loads(form.get('data'))
 
-    try:
-        energy_profile = request.files.get('electricity')
-        price_profile = request.files.get('price')
+    # try:
+    energy_profile = request.files.get('electricity')
+    price_profile = request.files.get('price')
 
-        # Ensure only .csv files are allowed
-        allowed_extensions(energy_profile.filename)
-        allowed_extensions(price_profile.filename)
+    # Ensure only .csv files are allowed
+    allowed_extensions(energy_profile.filename)
+    allowed_extensions(price_profile.filename)
 
-        # Ensure the .csv files are compliant with the required schema
-        validate_schema(energy_profile, "electricity")
-        validate_schema(price_profile, "price")
+    # Ensure the .csv files are compliant with the required schema
+    validate_schema(energy_profile, "electricity")
+    validate_schema(price_profile, "price")
 
-        energy_profile.stream.seek(0)
-        price_profile.stream.seek(0)
+    energy_profile.stream.seek(0)
+    price_profile.stream.seek(0)
 
-        Revenue_Plot, ROI_Plot, Payback_Plot, Battery_Degradation_Daily, Battery_Degradation_Annual, Financial_Performance_Daily, Financial_Performance_Annual = model(
-            data, energy_profile, price_profile)
-    except Exception as e:
-        return bad_request(str(e))
+    Revenue_Plot, ROI_Plot, Payback_Plot, Battery_Degradation_Daily, Battery_Degradation_Annual, Financial_Performance_Daily, Financial_Performance_Annual = model(
+        data, energy_profile, price_profile)
+    # except Exception as e:
+    #     print("There's an exception: " + str(e), flush=True)
+    #     return bad_request(str(e))
 
     return {"plots": {"Revenue_Plot": Revenue_Plot, "ROI_Plot": ROI_Plot, "Payback_Plot": Payback_Plot},
             "csv": {"Battery_Degradation_Daily": Battery_Degradation_Daily, "Battery_Degradation_Annual": Battery_Degradation_Annual, "Financial_Performance_Daily": Financial_Performance_Daily, "Financial_Performance_Annual": Financial_Performance_Annual}
