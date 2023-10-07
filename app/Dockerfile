@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm config set cafile "/usr/src/app/certs/CAINLROOT.crt"
+# RUN npm config set cafile "/usr/src/app/certs/CAINLROOT.crt"
 RUN npm install
 
 RUN npm run build
