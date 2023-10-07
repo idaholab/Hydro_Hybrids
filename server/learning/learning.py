@@ -47,7 +47,7 @@ def model(dict1, energy_profile, price_profile):
     # define how many battery capacities will be tested, total number of capacities will be n
     capacity_interval = 15
     capacity_interval_range = [round(elem, 2) for elem in list(
-        np.linspace(capacity_range[0], capacity_range[1], num=capacity_interval))]
+        np.linspace(float(capacity_range[0]), float(capacity_range[1]), num=capacity_interval))]
 
     storage_hour_range = [0.5, 1, 2, 3, 4]
     storage_hour_interval = len(storage_hour_range)
