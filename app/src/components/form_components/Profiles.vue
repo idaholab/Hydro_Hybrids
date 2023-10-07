@@ -146,19 +146,16 @@ export default {
     async samples() {
       // Get the Energy Generation sample
       let energy_sample = await axios
-        .get(
-          `http://localhost:5000/static/samples/EnergyGenerationProfile.csv`,
-          {
-            responseType: "arraybuffer",
-          }
-        )
+        .get(`api/static/samples/EnergyGenerationProfile.csv`, {
+          responseType: "arraybuffer",
+        })
         .then((response) => {
           return response.data;
         });
 
       // Get the Price sample
       let profile_sample = await axios
-        .get(`http://localhost:5000/static/samples/PriceProfile.csv`, {
+        .get(`api/static/samples/PriceProfile.csv`, {
           responseType: "arraybuffer",
         })
         .then((response) => {
